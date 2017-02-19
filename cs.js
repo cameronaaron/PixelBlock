@@ -7,7 +7,7 @@ window.onload = function () {
   
   // gmail.js
   var gmsrc = document.createElement('script');
-  gmsrc.src = chrome.extension.getURL('scripts/gmail.min.js');
+  gmsrc.src = chrome.extension.getURL('scripts/inbox.min.js');
   document.getElementsByTagName('body')[0].appendChild(gmsrc);
   
   // main.js
