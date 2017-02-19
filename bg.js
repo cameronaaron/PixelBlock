@@ -5,17 +5,17 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(req){
   
 
   //Check if this request came from gmail
-  var from_gmail = false, headers = req.requestHeaders;
+  var from_inbox = false, headers = req.requestHeaders;
   for(var i = 0; i < headers.length; i++) {
    if(headers[i].name.toLowerCase() == 'referer'){
-     if(headers[i].value.indexOf('//mail.google.com/') > 0){
-       from_gmail = true;
+     if(headers[i].value.indexOf('//inbox.google.com/') > 0){
+       from_inbox = true;
        break;
      }
    }
   }
 
-  if(req.type == 'image' && !safe && from_gmail){
+  if(req.type == 'image' && !safe && from_inbox){
     blocking_response.cancel = true;
   }
   return blocking_response;
