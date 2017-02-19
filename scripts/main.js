@@ -3,7 +3,7 @@
  */
 var pixelblock = (function(){
 
-  var gmail = null,
+  var inbox = null,
       safe_pattern  = '?safe-img-pbza#',
       proxy_pattern = 'googleusercontent.com/proxy';
 
@@ -153,9 +153,9 @@ var pixelblock = (function(){
   var scan_images = function(){
     try {
       // Note: For some reason gmail.js seems to crash once in a while, add a check to re-init it
-      if (typeof gmail == 'undefined') gmail = Gmail();
+      if (typeof inbox == 'undefined') inbox = Inbox();
    
-      var body = gmail.dom.email_body();
+      var body = inbox.dom.email_body();
   
       var emails = $(body[0]).find('div.h7[processed!="true"]');
       // go through all open emails on screen
@@ -191,7 +191,7 @@ var pixelblock = (function(){
     // add bootstrap.js
     $('#bs-script').attr('src', $('#bs-script').attr('data-src'));
     // init gmail.js
-    gmail = Gmail();
+    inbox = Inbox();
   }
 
   var start = function(){
@@ -203,7 +203,7 @@ var pixelblock = (function(){
 
 // check if jquery/gmail.js loaded & initialized
 var checkLoaded = function() {
-  if(window.jQuery && typeof Gmail != 'undefined') {
+  if(window.jQuery && typeof Inbox != 'undefined') {
     $.fn.onAvailable = function(e) {
       var t = this.selector;
       var n = this;
